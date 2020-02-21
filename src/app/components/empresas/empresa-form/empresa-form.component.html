@@ -1,0 +1,86 @@
+<div class="dialog-content-wrapper">
+    <div mat-dialog-content>
+        <form [formGroup]="empresaForm">
+            <div>
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Nombre</mat-label>
+                    <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                    <input name="nombre" formControlName="nombre" matInput required>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>direccion</mat-label>
+                    <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                    <input name="direccion" formControlName="direccion" matInput>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>latitud</mat-label>
+                    <mat-icon matSuffix class="secondary-text">star</mat-icon>
+                    <input name="latitud" formControlName="latitud" matInput>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Longitud</mat-label>
+                    <mat-icon matSuffix class="secondary-text">longitud</mat-icon>
+                    <input formControlName="longitud" matInput>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>num_espacios</mat-label>
+                    <mat-icon matSuffix class="secondary-text">num_espacios</mat-icon>
+                    <input name="num_espacios" formControlName="num_espacios" matInput type="number">
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>fraccion</mat-label>
+                    <mat-icon matSuffix class="secondary-text">domain</mat-icon>
+                    <input name="fraccion" formControlName="fraccion" matInput>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>precio</mat-label>
+                    <mat-icon matSuffix class="secondary-text">precio</mat-icon>
+                    <input name="precio" formControlName="precio" matInput type="number">
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>descuento</mat-label>
+                    <mat-icon matSuffix class="secondary-text">work</mat-icon>
+                    <input name="descuento" formControlName="descuento" matInput>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+        <button *ngIf="action === 'edit'" mat-button class="mr-8" (click)="matDialogRef.close(['delete',empresaForm])"
+            aria-label="Delete" matTooltip="Delete">
+            BORRAR
+        </button>
+
+        <button *ngIf="action !== 'edit'" mat-button class="save-button" (click)="matDialogRef.close(empresaForm)"
+            [disabled]="empresaForm.invalid" aria-label="SAVE">
+            ADD
+        </button>
+
+        <button *ngIf="action === 'edit'" mat-button class="save-button"
+            (click)="matDialogRef.close(['save',empresaForm])" [disabled]="empresaForm.invalid" aria-label="SAVE">
+            ACTUALIZAR
+        </button>
+
+    </div>
+</div>

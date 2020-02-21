@@ -1,0 +1,30 @@
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+
+        <mat-card class="authBlock">
+
+            <h3 class="text-center">Log In</h3>
+            <form class="example-container mt-4" [formGroup]="loginForm" (ngSubmit)="login()" autocomplete="on">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Correo</mat-label>
+                    <input matInput type="email" formControlName="correo" required>
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <mat-pass-toggle-visibility #toggleVisbility2 matSuffix>
+                    </mat-pass-toggle-visibility>
+                    <input matInput #password2 formControlName="pass" type="password" [type]="toggleVisbility2.type">
+                </mat-form-field>
+
+                <!-- Boton Registro-->
+                <mat-card-actions>
+                    <button class="btn btn-success btn-block" type="submit" [disabled]="!loginForm.valid">Ingresar</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+
+</div>

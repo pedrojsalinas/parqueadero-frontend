@@ -1,0 +1,70 @@
+<mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+        <mat-cell *matCellDef="let empresa">
+            <p class="text-truncate font-weight-600">{{empresa.id}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef>nombre</mat-header-cell>
+        <mat-cell *matCellDef="let empresa">
+            <p class="text-truncate font-weight-600">{{empresa.nombre}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="direccion">
+        <mat-header-cell *matHeaderCellDef>direccion</mat-header-cell>
+        <mat-cell *matCellDef="let empresa">
+            <p class="text-truncate font-weight-600">{{empresa.direccion}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="latitud">
+        <mat-header-cell *matHeaderCellDef>latitud</mat-header-cell>
+        <mat-cell *matCellDef="let empresa">
+            <p class="text-truncate font-weight-600">{{empresa.latitud}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="longitud">
+        <mat-header-cell *matHeaderCellDef>longitud</mat-header-cell>
+        <mat-cell *matCellDef="let empresa">
+            <p class="text-truncate font-weight-600">{{empresa.longitud}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="num_espacios">
+        <mat-header-cell *matHeaderCellDef>num_espacios</mat-header-cell>
+        <mat-cell *matCellDef="let empresa">
+            <p class="text-truncate font-weight-600">{{empresa.num_espacios}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="fraccion">
+        <mat-header-cell *matHeaderCellDef>fraccion</mat-header-cell>
+        <mat-cell *matCellDef="let empresa">
+            <p class="text-truncate font-weight-600">{{empresa.fraccion}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="precio">
+        <mat-header-cell *matHeaderCellDef>precio</mat-header-cell>
+        <mat-cell *matCellDef="let empresa">
+            <p class="text-truncate font-weight-600">{{empresa.precio}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="descuento">
+        <mat-header-cell *matHeaderCellDef>descuento</mat-header-cell>
+        <mat-cell *matCellDef="let empresa">
+            <p class="text-truncate font-weight-600">{{empresa.descuento}}</p>
+        </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let empresa; columns: displayedColumns;" class="empresa" (click)="editarEmpresa(empresa)"
+        matRipple>
+    </mat-row>
+</mat-table>

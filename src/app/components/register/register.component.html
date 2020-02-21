@@ -1,0 +1,70 @@
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+
+        <div class="authBlock mb-5">
+            <h3 class="text-center">Registro</h3>
+
+            <form class="example-container mt-4" [formGroup]="registroForm" (ngSubmit)="registro()" autocomplete="on">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombres</mat-label>
+                    <input matInput formControlName="name" type="text" autofocus>
+                    <mat-icon matSuffix>face</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Apellidos</mat-label>
+                    <input matInput formControlName="lastname" type="text">
+                    <mat-icon matSuffix>face</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Correo</mat-label>
+                    <input matInput type="email" formControlName="correo" required>
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-error *ngFor="let validation of account_validation_messages.correo">
+                        <mat-error class="error-message" *ngIf="registroForm.get('correo').hasError(validation.type) && (registroForm.get('correo').dirty || registroForm.get('correo').touched)">
+                            {{validation.message}}</mat-error>
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Password -->
+                <mat-slide-toggle #toggleDetalle>Mostrar Detalles Password
+                </mat-slide-toggle>
+
+                <mat-form-field appearance="outline" hintLabel="Min. 8 characters" [color]="passwordComponent.color">
+                    <mat-label>Contraseña</mat-label>
+                    <mat-pass-toggle-visibility #toggleVisbility matSuffix>
+                    </mat-pass-toggle-visibility>
+                    <input matInput #password formControlName="pass" type="password" [type]="toggleVisbility.type">
+
+                    <mat-hint align="end" aria-live="polite">
+                        {{password.value.length}} / {{passwordComponent.max}}
+                    </mat-hint>
+                </mat-form-field>
+
+                <!-- Validador password -->
+                <mat-password-strength #passwordComponent [min]="8" [max]="20" [password]="password.value">
+                </mat-password-strength>
+
+                <!--Password info requeriments-->
+                <mat-password-strength-info *ngIf="toggleDetalle.checked" [passwordComponent]="passwordComponent" [enableScoreInfo]="true" lowerCaseCriteriaMsg="Contiene al menos un carácter en mínuscula" upperCaseCriteriaMsg="Contiene al menos un carácter en mayúscula"
+                    digitsCriteriaMsg="Contiene al menos un carácter numérico" specialCharsCriteriaMsg="Contiene al menos un carácter especial" minCharsCriteriaMsg="Contiene al menos 8 carácteres">
+                </mat-password-strength-info>
+
+                <hr>
+
+                <!-- Boton Registro-->
+                <mat-card-actions>
+                    <button class="btn btn-success btn-block" type="submit" [disabled]="!registroForm.valid">Registrarme</button>
+                </mat-card-actions>
+            </form>
+            <hr>
+            <div class="">
+                <span>¿Volver al tablero? <span class="" routerLink="/dashboard">Dashboard</span></span>
+            </div>
+        </div>
+
+    </div>
+
+</div>
